@@ -1,5 +1,6 @@
 import React, {useState, useEffect, useCallback} from 'react';
-import {useStore, useSelector, useDispatch} from 'react-redux';
+import { useDispatch} from 'react-redux';
+// import {useStore, useSelector, useDispatch} from 'react-redux';
 import {IProduct} from '../store/modules/cart/types'
 import {addProductToCart} from '../store/modules/cart/actions'
 import api from '../services/api'
@@ -16,16 +17,17 @@ const Components: React.FC = () => {
   const handleAddProductToCart = useCallback((product:IProduct ) => {
     dispatch(addProductToCart(product))
   },[dispatch])
-  {
-    const store = useStore()
-    const state = useSelector(state => state)
+  // {
+    
+  //   const store = useStore()
+  //   const state = useSelector(state => state)
 
     
-    console.log('NÂO RECOMENDADO Acesso ao STORE', store)
-    console.log('NÂO RECOMENDADO  Acesso ao estado da aplicação', store.getState())
+  //   console.log('NÂO RECOMENDADO Acesso ao STORE', store)
+  //   console.log('NÂO RECOMENDADO  Acesso ao estado da aplicação', store.getState())
 
-    console.log('SUPER RECOMENDADO  Acesso ao estado da aplicação', state)
-  }
+  //   console.log('SUPER RECOMENDADO  Acesso ao estado da aplicação', state)
+  // }
   return (
     <>
       <h1>
