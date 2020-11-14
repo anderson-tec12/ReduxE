@@ -1,12 +1,6 @@
 import {createStore} from 'redux';
-
+import rootReducers from './modules/rootReducers'
 //toda a aplicação tem acesso ao store
-const store = createStore(()=> {
-  return  {
-    id: 1,
-    email: 'anderson@gmail.com',
-    name:'Anderson Barros Silva'
-  }
-})
+const store = createStore(rootReducers)
 
 export default store
