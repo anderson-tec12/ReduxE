@@ -1,14 +1,21 @@
 import React, {useCallback} from 'react'
 import {IProduct} from '../store/modules/cart/types'
-import { useDispatch} from 'react-redux';
+import { useDispatch, useSelector} from 'react-redux';
 import {addProductToCartRequest} from '../store/modules/cart/actions'
+import {IState} from '../store/index'
 
 interface CatalogItemProps{
   product: IProduct
 }
 
  const CatalogItem:React.FC<CatalogItemProps> = ({product}) => {
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
+
+  const hasFailedStockCheck = useSelector<IState, boolean>(state => {
+    //console.log('aqui', state.cart.failedStockCheck.includes(product.id))
+    //return true
+    return state.cart.failedStockCheck.includes(product.id)
+  })
   
   const handleAddProductToCart = useCallback(() => {
     dispatch(addProductToCartRequest(product))
@@ -18,7 +25,11 @@ interface CatalogItemProps{
     <article>
       <strong>{product.title}</strong> {" - "}
       <span>{product.price}</span> {"  "}
-      <button type="button" onClick={handleAddProductToCart}>Comprar</button>
+      <button type="button" onClick={handleAddProductToCart}>Comprar</button>{"  "}
+      
+      {
+        hasFailedStockCheck && <span style={{color:'red'}}>Falta de estoque</span>
+      }
     </article>
     
   )

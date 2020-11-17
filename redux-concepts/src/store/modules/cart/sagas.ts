@@ -3,6 +3,7 @@ import {addProductToCartRequest, addProductToCartSuccess, addProductToCartFailur
 import {IState} from '../../';
 import {AxiosResponse} from 'axios'
 import api from '../../../services/api'
+import {ActionTypes} from '../cart/types'
  /*
   takeLatest = executaso a ultima
   select = busca informações do estado global
@@ -41,5 +42,5 @@ function* checkProductStock({payload}:CheckProductRequest){
 }
 
 export default all([
-  takeLatest('ADD_PRODUCT_TO_CART_REQUEST', checkProductStock)
+  takeLatest(ActionTypes.addProductToCartRequest, checkProductStock)
 ])
