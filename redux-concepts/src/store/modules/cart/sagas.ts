@@ -1,12 +1,12 @@
 import {all, takeLatest, select} from  'redux-saga/effects';
-import {addProductToCart} from './actions'
+import {addProductToCartRequest} from './actions'
 import {IState} from '../../'
  /*
   takeLatest = executaso a ultima
   select = busca informações do estado global
  */
 
- type CheckProductRequest = ReturnType<typeof addProductToCart>
+ type CheckProductRequest = ReturnType<typeof addProductToCartRequest>
 
 function* checkProductStock({payload}:CheckProductRequest){
   console.log('Toda funcao recebe uma Action', payload)
@@ -21,5 +21,5 @@ function* checkProductStock({payload}:CheckProductRequest){
 }
 
 export default all([
-  takeLatest('ADD_PRODUCT_TO_CART', checkProductStock)
+  takeLatest('addProductToCartRequest', checkProductStock)
 ])

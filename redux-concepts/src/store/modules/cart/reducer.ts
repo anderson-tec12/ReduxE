@@ -11,8 +11,8 @@ const cart:Reducer<ICartState> = (state = INITIAL_STATE, action) => {
   console.log(state, action)
   return produce(state, draft => {
     switch(action.type){
-      case 'ADD_PRODUCT_TO_CART':{
-        console.log('ADD_PRODUCT_TO_CART')
+      case 'ADD_PRODUCT_TO_CART_SUCCESS':{
+        console.log('ADD_PRODUCT_TO_CART_SUCCESS')
         const {product} = action.payload;
 
         const productInCartIndex = draft.items.findIndex(item => item.product.id === product.id)
