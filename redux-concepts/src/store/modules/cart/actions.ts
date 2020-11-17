@@ -22,7 +22,7 @@ export function addProductToCartFailure(productID:number){
   return {
     type: "ADD_PRODUCT_TO_CART_FAILURE",
     payload:{ //qualquer informação adicional
-      product:[]
+      productID
     }
   }
 }
